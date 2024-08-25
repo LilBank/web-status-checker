@@ -1,0 +1,40 @@
+name: Backend Unit Testing
+
+on:
+  push:
+    branches:
+      - 'be/*'
+  pull_request:
+    branches:
+      - 'be/*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: './backend/.nvmrc'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}-${{ hashFiles('backend/.nvmrc') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./backend
+
+      - name: Run tests
+        run: yarn test
+        working-directory: ./backend

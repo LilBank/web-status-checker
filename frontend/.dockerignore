@@ -1,0 +1,14 @@
+# Ignore node modules and build outputs
+node_modules/
+build/
+
+# Ignore logs and development files
+*.log
+.dockerignore
+Dockerfile*
+.env
+.nvmrc
+
+# Ignore test and documentation files
+__tests__/
+docs/

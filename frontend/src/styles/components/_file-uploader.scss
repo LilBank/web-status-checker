@@ -1,0 +1,101 @@
+.file-uploader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    > :first-child {
+      margin-bottom: 22px;
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    margin-top: 40px;
+
+    @media (min-height: map-get($breakpoints, 'lg')) {
+      margin-top: 60px;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    color: map-get($colors, 'text');
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 35px 20px;
+    border: 4px dashed #C7CDDB;
+    border-radius: 30px;
+    background-color: map-get($colors, 'background');
+
+    > :not(:last-child) {
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: map-get($breakpoints, 'sm')) {
+      padding: 35px 28px;
+    }
+  }
+
+  &__input-button {
+    cursor: pointer;
+    padding: 12px 52px;
+    border: none;
+    border-radius: 8px;
+    color: white ;
+    background-color: map-get($colors, 'primary');
+
+    @media (min-width: map-get($breakpoints, 'sm')) {
+      padding: 24px 64px;
+    }
+
+    &--disabled {
+      background-color: gray;
+    }
+  }
+
+  &__input-description {
+    color: map-get($colors, 'text');
+    text-align: center;
+  }
+
+  &__input-divisor {
+    display: flex;
+    align-items: center;
+
+    > :not(:last-child) {
+      margin-right: 14px;
+    }
+    
+    > p {
+      color: #95A1BB;
+    }
+  }
+
+  &__title > h1,
+  &__input-description,
+  &__input-button,
+  &__input-divisor > p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+
+    @media (min-width: map-get($breakpoints, 'sm')) {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 37.5px;
+    }
+  }
+}

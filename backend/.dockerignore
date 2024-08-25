@@ -1,0 +1,12 @@
+# Ignore node_modules and the build folder
+node_modules/
+build/
+
+# Ignore logs and development files
+*.log
+.dockerignore
+Dockerfile*
+.nvmrc
+
+# Ignore test directories and files
+__tests__/

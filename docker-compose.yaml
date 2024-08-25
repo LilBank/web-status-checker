@@ -1,0 +1,36 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.fe
+    ports:
+      - "8080:8080"
+    networks:
+      - web-checker
+    depends_on:
+      - loadbalancer
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.be
+    deploy:
+      replicas: 3
+    expose:
+      - "3000"
+    networks:
+      - web-checker
+
+  loadbalancer:
+    build:
+      context: .
+      dockerfile: Dockerfile.lb
+    ports:
+      - "4000:4000"
+    networks:
+      - web-checker
+    depends_on:
+      - backend
+
+networks:
+  web-checker:
